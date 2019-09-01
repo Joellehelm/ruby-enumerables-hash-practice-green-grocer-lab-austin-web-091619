@@ -58,7 +58,7 @@ total = 0
 cc = consolidate_cart(cart)
 applied = apply_coupons(cc, coupons)
 cleared = apply_clearance(applied)
-total = cleared.reduce(0) { |sum, (k, v)| sum += v[:price] * v[:count]}
+cleared.each { |k, v| total += k[:price] * k[:count]}
 if total >= 100
   total = total * 0.90
 else
