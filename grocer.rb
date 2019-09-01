@@ -61,6 +61,8 @@ cleared = apply_clearance(applied)
 total = cleared.reduce(0) { |sum, (k, v)| sum += v[:price] * v[:count]}
 if total >= 100
   total = total * 0.90
+else
+  return total
 end
 return total
 
