@@ -58,7 +58,7 @@ total = 0
 cc = consolidate_cart(cart)
 applied = apply_coupons(cc, coupons)
 cleared = apply_clearance(applied)
-cleared.reduce(0) { |k, v| total += k[v]}
+cleared.reduce { |k, v| total += v[:price] * v[:count]}
 return total
 
 end
