@@ -58,5 +58,9 @@ def checkout(cart, coupons)
   coupons_applied = apply_coupons(consolidated, coupons)
   cleared = apply_clearance(coupons_applied)
   cleared.reduce { |k, v| total += k[:price]}
+  if total >= 100
+    total = *= 0.90
+  end
+  return total
 
 end
