@@ -54,11 +54,5 @@ end
 end
 
 def checkout(cart, coupons)
-  consolidated = consolidate_cart(cart)
-  coupons_applied = apply_coupons(consolidated, coupons)
-  cleared = apply_clearance(coupons_applied)
-  if cleared >= 100
-    cleared = cleared * 0.90
-  end
-  return cleared
+consolidate = consolidate(cart)
 end
