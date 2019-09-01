@@ -54,22 +54,11 @@ end
 end
 
 def checkout(cart, coupons)
-  total = 0
-  consolidated = consolidate_cart(cart)
-  if coupons != []
-  coupons_applied = apply_coupons(consolidated, coupons)
-else
-  coupons_applied = consolidated
-end
-  cleared = apply_clearance(coupons_applied)
-
-  cleared.each do |k, v|
-    total += cleared[k][:price]
-  end
-  if total >= 100
-    total = total * 0.90
-  end
-
-  return total
+total = 0
+cc = consolidate_cart(cart)
+applied = apply_coupons(cc, coupons)
+cleared = apply_clearance(applied)
+cleared.reduce(0) { |k, v| total += k[v]}
+return total
 
 end
