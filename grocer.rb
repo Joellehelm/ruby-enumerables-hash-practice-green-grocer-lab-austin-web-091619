@@ -31,9 +31,9 @@ def apply_coupons(cart, coupons)
         applied["#{item} W/COUPON"] = {:price => coupon[:cost] / coupon_num,
           :clearance => cart[item][:clearance],
           :count => coupon_num }
-          applied[item][:count] -= coupon_num
+          
       end
-
+        applied[item][:count] -= coupon_num
   end
 
   return applied
